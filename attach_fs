@@ -1,0 +1,28 @@
+#!/bin/bash
+# script: mount_fs.sh
+# author: www.globalnewtech.com
+# desc: format, backup and mount linux fs 
+# last modified: 09/16/2019
+
+if [ $# -ne 2 ]
+then
+ echo "Usage: $0 [device] [mount point]"
+  exit
+  fi
+
+  devname=$1
+  mntname=$2
+
+  if [ ! -d /${mntname} ]
+  then
+   mkdir /${mntname}
+   fi
+
+   mkfs.ext4 /dev/${devname}
+
+   cp /etc/fstab /etc/fstab.bak
+
+   echo "/dev/${devname} /${mntname} ext4 defaults,noatime 1 1" >> /etc/fstab
+   mount /${mntname}
+
+   df -h
