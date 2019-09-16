@@ -1,0 +1,3 @@
+# Settings for aws ec2 instances, elb
+region_name: us-east-1
+Sample_stack_name: "WordPressStack"
